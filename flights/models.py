@@ -1,7 +1,6 @@
 from django.db import models
 
 # Create your models here.
-
 class Airport(models.Model):
     code = models.CharField(max_length=3)
     city = models.CharField(max_length=64)
@@ -16,11 +15,11 @@ class Flight(models.Model):
     duration = models.IntegerField()
 
     def __str__(self):
-        return f"{self.id}: {self.origin} to {self.destination}"
-    
-    # Test
+        return f"{self.id} : {self.origin} to {self.destination}"
+
     def is_valid_flight(self):
-        return self.origin != self.destination and self.duration > 0
+        return self.origin != self.destination and self.duration >= 0
+
 
 class Passenger(models.Model):
     first = models.CharField(max_length=64)
@@ -29,4 +28,3 @@ class Passenger(models.Model):
 
     def __str__(self):
         return f"{self.first} {self.last}"
-
